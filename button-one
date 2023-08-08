@@ -1,0 +1,26 @@
+import "./styles.css";
+import { useState, useEffect } from "react";
+export default function App() {
+  const [show, unShow] = useState("show");
+  const [correct, unCorrect] = useState(false);
+  function clicked() {
+    unCorrect(false);
+    unShow();
+  }
+  function unClicked() {
+    unCorrect(true);
+    unShow(show);
+  }
+  return (
+    <>
+      {correct ? (
+        <button onClick={clicked}>Hide Element Below</button>
+      ) : (
+        <>
+          <button onClick={unClicked}>show Element Below</button>
+          <div>{show}</div>
+        </>
+      )}
+    </>
+  );
+}
