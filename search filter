@@ -1,0 +1,30 @@
+import "./styles.css";
+import { useState } from "react";
+export default function App() {
+  const list = ["banana", "apple", "orange", "pineapple"];
+  const [show, unShow] = useState(list);
+  const clicked = (event) => {
+    if (event.target.value === " ") {
+      unShow(show);
+      return;
+    }
+    const s = list.filter(
+      (item) =>
+        item.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+    );
+    unShow(s);
+    return unShow;
+  };
+  return (
+    <div className="App">
+      <input onChange={clicked}></input>
+      <ul>
+        <div className="APPP">
+          {show.map((item, id) => {
+            return <li key={id}>{item}</li>;
+          })}
+        </div>
+      </ul>
+    </div>
+  );
+}
